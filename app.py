@@ -5,8 +5,12 @@ st.set_page_config(layout="wide")
 
 st.title("Clinical Trial Dashboard")
 
-df = pd.read_csv("data.csv")
-``
+uploaded_file = st.file_uploader("Upload a CSV file (optional)", type=["csv"])
+
+if uploaded_file is not None:
+    df = pd.read_csv(uploaded_file)
+else:
+    df = pd.read_csv("data.csv")
 
     region_filter = st.sidebar.multiselect("Select Region", df["Region"].unique())
     category_filter = st.sidebar.multiselect("Select Category", df["Category"].unique())
