@@ -5,10 +5,12 @@ st.set_page_config(layout="wide")
 
 st.title("My First Streamlit Dashboard")
 
-uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
+uploaded_file = st.file_uploader("Upload a CSV file (optional)", type=["csv"])
 
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
+else:
+    df = pd.read_csv("data.csv")
 
     st.sidebar.header("Filters")
 
