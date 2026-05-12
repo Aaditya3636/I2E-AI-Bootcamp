@@ -161,7 +161,7 @@ page_top = st.radio(
     "",
     [
         "Executive Overview",
-        "Portfolio Schedules"
+        "Portfolio Schedule"
     ],
     horizontal=True
 )
