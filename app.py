@@ -456,7 +456,7 @@ with tab1:
         c1, c2 = st.columns(2)
 
         # =====================================================
-        # PIE CHART
+        # DONUT CHART
         # =====================================================
 
         with c1:
@@ -477,12 +477,33 @@ with tab1:
                 "Count"
             ]
 
+            # ✅ SAME COLOR MAP AS REGION CHART
+            status_color_map = {
+                "On Track": "#3b82f6",
+                "At Risk": "#f59e0b",
+                "Off Track": "#ef4444",
+                "Completed": "#6b7280",
+                "Planning": "#93c5fd"
+            }
+
             fig = px.pie(
                 status_counts,
                 names="Status",
                 values="Count",
-                hole=0.62
+                hole=0.62,
+                color="Status",
+                color_discrete_map=status_color_map   # ✅ THIS FIXES IT
             )
+
+
+            fig.update_traces(
+                textinfo="percent",
+                texttemplate="%{percent} (%{value})",
+
+                # ✅ THIS CONTROLS HOVER
+                hovertemplate="%{label}<extra></extra>"
+            )
+
 
             fig.update_layout(
                 margin=dict(t=20, b=40, l=20, r=20),
@@ -495,6 +516,7 @@ with tab1:
                 fig,
                 use_container_width=True
             )
+
 
         # =====================================================
         # REGION CHART
@@ -718,7 +740,7 @@ with tab1:
                             font-size:12px;
                             margin-bottom:4px;
                         ">
-                            ${row['Total Budget']:,.0f}
+                            ${row['Allocated Budget']:,.0f}
                         </div>
 
                         <div style="
@@ -778,7 +800,7 @@ with tab1:
 with tab2:
 
         st.markdown(
-            '<div class="section-subtitle">Multi-year roadmap for active clinical trials.</div>',
+            '<div class="section-subtitle">Multi-year roadmap for clinical trials.</div>',
             unsafe_allow_html=True
         )
 
