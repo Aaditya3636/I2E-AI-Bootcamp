@@ -268,6 +268,7 @@ div[data-testid="column"] button[kind="secondary"]:hover {
 
 df = pd.read_csv("data.csv")
 
+
 # =====================================================
 # DATE PARSING
 # =====================================================
@@ -740,7 +741,7 @@ with tab1:
                             font-size:12px;
                             margin-bottom:4px;
                         ">
-                            ${row['Allocated Budget']:,.0f}
+                            ${row['Allocated Budget']:,.0f} ({alloc:.0f}%)
                         </div>
 
                         <div style="
