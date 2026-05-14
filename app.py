@@ -312,7 +312,7 @@ tab1, tab2 = st.tabs([
 st.sidebar.markdown(
     """
     <div style="
-        font-size:15px;
+        font-size:20px;
         font-weight:600;
         color:#093C5D;
         letter-spacing:0.3px;
